@@ -1,0 +1,4 @@
+streamlit
+pandas
+psycopg[binary,pool]
+databricks-sdk>=0.89.0

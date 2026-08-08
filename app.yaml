@@ -1,0 +1,24 @@
+# Databricks Apps configuration.
+# These env values are connection PARAMETERS, not secrets — safe to commit.
+# The OAuth token used as the DB password is generated at runtime by the app.
+#
+# Fill in the four <...> placeholders from the Lakebase "Connect" modal
+# (choose "Parameters only") and the app's Environment tab.
+
+command: ["streamlit", "run", "app.py", "--server.port", "8000", "--server.address", "0.0.0.0"]
+
+env:
+  - name: PGHOST
+    value: "<your-endpoint-hostname>"        # e.g. ep-xyz.database.us-west-2.dev.databricks.com
+  - name: PGDATABASE
+    value: "databricks_postgres"
+  - name: PGUSER
+    value: "<DATABRICKS_CLIENT_ID>"           # the app's service-principal client id
+  - name: PGPORT
+    value: "5432"
+  - name: PGSSLMODE
+    value: "require"
+  - name: ENDPOINT_NAME
+    value: "projects/<project-id>/branches/<branch-id>/endpoints/<endpoint-id>"
+  - name: STREAMLIT_GATHER_USAGE_STATS
+    value: "false"
